@@ -8,22 +8,24 @@ np.random.seed(0)
 sigma = 10
 
 # Generate random LP problem (objective function coefficients and constraints)
-m = int(round(10 * np.exp(np.log(100) * np.random.rand())))
+m = int(round(100 * np.exp(np.log(100) * np.random.rand())))  # Increase the multiplier for m
 n = int(round(10 * np.exp(np.log(100) * np.random.rand())))
+A = np.round(sigma * np.random.randn(m, n))
+b = np.round(sigma * np.abs(np.random.randn(m, 1)))
+c = np.round(sigma * np.random.randn(1, n))
 
-c = np.round(sigma * np.random.randn(n))
-A_eq = np.round(sigma * np.random.randn(1, n))
-b_eq = np.round(sigma * np.abs(np.random.randn(1)))
-
-# Solve LP problem using interior-point method
-result = linprog(c, A_eq=A_eq, b_eq=b_eq, method='interior-point')
+# Solve LP problem
+result = linprog(c, A_eq=A, b_eq=b.flatten(), method='highs')
 
 # Display LP problem and solution
-print('LP Problem:')
-print(f'Objective Function Coefficients (c): {c}')
-print(f'Equality Constraint Coefficients (A_eq): {A_eq}')
-print(f'Equality Constraint RHS (b_eq): {b_eq}')
+print('Generated Values:')
+print(f'm = {m}')
+print(f'n = {n}')
+print('A = ')
+print(A)
+print(f'b = {b.flatten()}')
+print(f'c = {c.flatten()}')
 
-print('\nSolution using Interior-Point Method:')
-print(f'Optimal values: {result.x}')
+print('\nSolution:')
+print(f'Optimal values (x): {result.x}')
 print(f'Optimal objective function value: {result.fun}')
