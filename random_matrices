@@ -1,0 +1,29 @@
+import numpy as np
+from scipy.optimize import linprog
+
+# Set seed for reproducibility (optional)
+np.random.seed(0)
+
+# Parameters
+sigma = 10
+
+# Generate random LP problem (objective function coefficients and constraints)
+m = int(round(10 * np.exp(np.log(100) * np.random.rand())))
+n = int(round(10 * np.exp(np.log(100) * np.random.rand())))
+
+c = np.round(sigma * np.random.randn(n))
+A_eq = np.round(sigma * np.random.randn(1, n))
+b_eq = np.round(sigma * np.abs(np.random.randn(1)))
+
+# Solve LP problem using interior-point method
+result = linprog(c, A_eq=A_eq, b_eq=b_eq, method='interior-point')
+
+# Display LP problem and solution
+print('LP Problem:')
+print(f'Objective Function Coefficients (c): {c}')
+print(f'Equality Constraint Coefficients (A_eq): {A_eq}')
+print(f'Equality Constraint RHS (b_eq): {b_eq}')
+
+print('\nSolution using Interior-Point Method:')
+print(f'Optimal values: {result.x}')
+print(f'Optimal objective function value: {result.fun}')
