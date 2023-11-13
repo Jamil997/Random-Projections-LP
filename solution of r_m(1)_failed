@@ -1,0 +1,44 @@
+import numpy as np
+from scipy.optimize import linprog
+
+# Set seed for reproducibility (optional)
+np.random.seed(0)
+
+# Parameters
+sigma = 10
+
+# Initialize a flag for feasibility
+feasible = False
+
+while not feasible:
+    # Generate random LP problem (objective function coefficients and constraints)
+    m = int(round(100 * np.exp(np.log(100) * np.random.rand())))  # Increase the multiplier for m
+    n = int(round(10 * np.exp(np.log(100) * np.random.rand())))
+    A = np.round(sigma * np.random.randn(m, n))
+    b = np.round(sigma * np.abs(np.random.randn(m, 1)))
+    c = np.round(sigma * np.random.randn(1, n))
+
+    # Print LP problem for debugging
+    print('Generated Values:')
+    print(f'm = {m}')
+    print(f'n = {n}')
+    print('A = ')
+    print(A)
+    print(f'b = {b.flatten()}')
+    print(f'c = {c.flatten()}')
+
+    # Solve LP problem using 'simplex' method
+    result = linprog(c, A_eq=A, b_eq=b.flatten(), method='simplex')
+
+    # Check if the solution is feasible
+    if result.success:
+        feasible = True
+    else:
+        print(f'Solution failed with message: {result.message}')
+        print('Regenerating LP problem...')
+
+# Display solution
+print('\nSolution:')
+print(result)
+print(f'Optimal values (x): {result.x}')
+print(f'Optimal objective function value: {result.fun}')
