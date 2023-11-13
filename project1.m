@@ -1,4 +1,5 @@
-% here we tunt the parameters
+%This code implemented in Matlab
+% here we tune the parameters
 n = 100; % Dimension of x
 m = 20;  % Number of constraints
 k = 10;  % Dimension after random projection
