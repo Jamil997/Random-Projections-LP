@@ -12,6 +12,7 @@ lemma.
 
 ![Description of Image 2](reports/figures/2.jpg)
 
-The main advantage is that the projected problem has less computational time with a desired accuracy, what depends on the value of k. 
+The main advantage is that the projected problem has less computational time with a desired accuracy, what depends on the value of k. Results are presented in the following table. 
 ![Description of Image 3](reports/figures/3.jpg)
 
+The main implementation of MAtlab code is presented in "final_test.m" file. 
