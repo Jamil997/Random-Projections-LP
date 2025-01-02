@@ -1,4 +1,4 @@
-#Problem Description
+# Problem Description
 
 ![Description of Image 1](reports/figures/1.jpg)
 
