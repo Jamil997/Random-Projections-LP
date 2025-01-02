@@ -1,2 +1,1 @@
-![Alt Text](reports
-/figures/1.jpg)
+![Alt Text](reports/1.jpg)
