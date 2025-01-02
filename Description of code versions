@@ -1,6 +1,0 @@
-# Project_RP
-11/11/2023 the first trial to launch a code via MatLAb(unsuccesful)
-file r_m(1) contains a code generating random matrices
-file named "solution of r_m(1)_failed" shows an unsuccesful trial to find an optimal solution. 
-"1st_success.m" is the first successful trial. 
-solution "original problem" is the solution to the original LP problem, without applying random projections method.
